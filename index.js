@@ -18,6 +18,8 @@ client.on("ready", () => {
   ],
   status: "online",
 });
+
+console.log("Presence: Developed by Sarwinder");
 });
 
 const IGNORE_PREFIX = "!";
