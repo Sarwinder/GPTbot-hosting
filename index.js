@@ -55,7 +55,7 @@ client.on("messageCreate", async (message) => {
     content: "Chat GPT is a friendly chatbot.",
   });
 
-  let prevMessages = await message.channel.messages.fetch({ limit: 10 });
+  let prevMessages = await message.channel.messages.fetch({ limit: 5 });
   prevMessages.reverse();
 
   prevMessages.forEach((msg) => {
@@ -86,6 +86,7 @@ client.on("messageCreate", async (message) => {
   const response = await openai.chat.completions
     .create({
       model: "gemini-3.7-flash",
+      reasoning_effort: "low",
       messages: conversation,
     })
     .catch((error) => console.error("OpenAI Error:\n", error));
