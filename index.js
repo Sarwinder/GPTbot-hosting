@@ -11,7 +11,12 @@ client.on("ready", () => {
 });
 
 const IGNORE_PREFIX = "!";
-const CHANNELS = ["1554859501512032387"];
+const CHANNELS = [
+  "1554859501512032387",
+  "1024748942631653490",
+  "1555201669632102420"
+
+];
 
 const openai = new OpenAI({
   apiKey: process.env.GEMINI_API_KEY,
