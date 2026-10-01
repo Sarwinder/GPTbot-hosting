@@ -10,24 +10,23 @@ client.on("ready", () => {
   console.log("The bot is online.");
 
   client.user.setPresence({
-  activities: [
-    {
-      name: "👨‍💻 Developed by Sarwinder",
-      type: 4,
-    },
-  ],
-  status: "online",
-});
+    activities: [
+      {
+        name: "👨‍💻 Developed by Sarwinder",
+        type: 4,
+      },
+    ],
+    status: "online",
+  });
 
-console.log("Presence: Developed by Sarwinder");
+  console.log("Presence: Developed by Sarwinder");
 });
 
 const IGNORE_PREFIX = "!";
 const CHANNELS = [
   "1554859501512032387",
   "1024748942631653490",
-  "1555201669632102420"
-
+  "1555201669632102420",
 ];
 
 const openai = new OpenAI({
@@ -84,10 +83,9 @@ client.on("messageCreate", async (message) => {
     });
   });
 
-
   const response = await openai.chat.completions
     .create({
-      model: "gemini-3.8-flash",
+      model: "gemini-3.7-flash",
       messages: conversation,
     })
     .catch((error) => console.error("OpenAI Error:\n", error));
@@ -103,10 +101,12 @@ client.on("messageCreate", async (message) => {
 
   const responseMessage = response.choices[0].message.content;
 
-    if (!responseMessage) {
-    message.reply("The AI didn't return a response. Please try another prompt.");
+  if (!responseMessage) {
+    message.reply(
+      "The AI didn't return a response. Please try another prompt.",
+    );
     return;
-    }
+  }
 
   const chunkSizeLimit = 2000;
 
@@ -115,8 +115,6 @@ client.on("messageCreate", async (message) => {
 
     await message.reply(chunk);
   }
-
-
 });
 
 client.login(process.env.TOKEN);
