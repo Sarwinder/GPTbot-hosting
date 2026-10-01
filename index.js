@@ -8,6 +8,16 @@ const client = new Client({
 
 client.on("ready", () => {
   console.log("The bot is online.");
+
+  client.user.setPresence({
+  activities: [
+    {
+      name: "👨‍💻 Developed by Sarwinder",
+      type: 4,
+    },
+  ],
+  status: "online",
+});
 });
 
 const IGNORE_PREFIX = "!";
