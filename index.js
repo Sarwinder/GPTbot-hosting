@@ -87,7 +87,7 @@ client.on("messageCreate", async (message) => {
 
   const response = await openai.chat.completions
     .create({
-      model: "gemini-3.5-flash-lite",
+      model: "gemini-3.8-flash",
       messages: conversation,
     })
     .catch((error) => console.error("OpenAI Error:\n", error));
